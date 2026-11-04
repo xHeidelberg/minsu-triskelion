@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { site, values } from '../data/site';
+import { wrap, section, h2, btnGold } from '../data/ui';
+const years = new Date().getFullYear() - site.foundedYear;
+---
+<Layout title="About Us">
+  <PageHero title="About Us" intro={`Learn who we are, what we do, and what we stand for as the ${site.org} chapter in Bongabong.`} />
+
+  <section class={`${section} bg-cream`}>
+    <div class={`${wrap} grid items-center gap-10 md:grid-cols-2 md:gap-14`}>
+      <Placeholder class="order-2 aspect-[4/3] rounded-2xl md:order-1" label="About photo placeholder (public/images/about/)" />
+      <div class="order-1 md:order-2">
+        <h2 class={`${h2} mb-6`}>Our chapter</h2>
+        <div role="tablist" aria-label="About" class="mb-5 inline-flex rounded-lg bg-white p-1 shadow-sm">
+          <button role="tab" id="tab-who" aria-controls="panel-who" aria-selected="true" class="min-h-11 rounded-md px-5 text-sm font-bold aria-selected:bg-forest aria-selected:text-white">Who we are</button>
+          <button role="tab" id="tab-what" aria-controls="panel-what" aria-selected="false" class="min-h-11 rounded-md px-5 text-sm font-bold aria-selected:bg-forest aria-selected:text-white">What we do</button>
+        </div>
+        <div id="panel-who" role="tabpanel" aria-labelledby="tab-who" class="grid max-w-[60ch] gap-3 text-muted">
+          <p>{site.name} is the {site.org} chapter of Mindoro State University, Bongabong Campus. We were founded on {site.founded} and have served for {years} years.</p>
+          <p>Replace this paragraph with how the chapter started, who founded it, and what it has grown into.</p>
+        </div>
+        <div id="panel-what" role="tabpanel" aria-labelledby="tab-what" hidden class="grid max-w-[60ch] gap-3 text-muted">
+          <p>We organize chapter meetings, outreach, education activities, and community service projects across Bongabong.</p>
+          <p>Replace this paragraph with the work your chapter is proud of. See our <a href="/projects" class="font-bold text-forest underline decoration-gold decoration-2">projects page</a> for examples.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class={section}>
+    <div class={wrap}>
+      <h2 class={`${h2} mb-8`}>What we stand for</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {values.map(([t, d]) => (
+          <div class="rounded-2xl border-t-4 border-gold bg-cream p-6">
+            <h3 class="mb-2 font-display text-xl font-bold">{t}</h3>
+            <p class="text-sm text-muted">{d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class={`${section} bg-forest text-white`}>
+    <div class={`${wrap} grid gap-10 md:grid-cols-2`}>
+      <div>
+        <h2 class={`${h2} mb-3`}>Mission</h2>
+        <p class="max-w-[55ch] text-cream/85">Replace with your chapter’s mission statement.</p>
+      </div>
+      <div>
+        <h2 class={`${h2} mb-3`}>Vision</h2>
+        <p class="max-w-[55ch] text-cream/85">Replace with your chapter’s vision statement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class={section}>
+    <div class={`${wrap} grid items-center gap-8 md:grid-cols-[1fr_auto]`}>
+      <div>
+        <h2 class={`${h2} mb-3`}>Where to find us</h2>
+        <p class="text-muted">{site.address}</p>
+        <a href={site.mapsUrl} target="_blank" rel="noopener" class="mt-3 inline-block font-bold text-forest underline decoration-gold decoration-2 underline-offset-4">Open in Google Maps</a>
+      </div>
+      <a href="/contact" class={btnGold}>Get in touch</a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLElement>('[role=tab]')];
+  tabs.forEach((t) => t.addEventListener('click', () => {
+    tabs.forEach((x) => {
+      const on = x === t;
+      x.setAttribute('aria-selected', String(on));
+      document.getElementById(x.getAttribute('aria-controls')!)!.hidden = !on;
+    });
+  }));
+</script>

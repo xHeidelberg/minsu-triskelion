@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { site, contact } from '../data/site';
+import { wrap, section, btnGold, field } from '../data/ui';
+const info = [
+  ['Address', site.address, site.mapsUrl, 'Open in Google Maps'],
+  ['Email', contact.email, `mailto:${contact.email}`, 'Send an email'],
+  ['Phone', contact.phone, `tel:${contact.phone.replace(/\s/g, '')}`, 'Call'],
+  ['Facebook', 'Visit our page', contact.facebook, 'Open Facebook'],
+];
+---
+<Layout title="Get in touch">
+  <PageHero title="Get in touch" intro="Questions about the chapter, recruitment, or a project? Send us a message." />
+
+  <section class={`${section} bg-cream`}>
+    <div class={`${wrap} grid items-start gap-10 md:grid-cols-2 md:gap-14`}>
+      <div class="grid gap-5">
+        <div class="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm">
+          {contact.img
+            ? <img src={contact.img} alt={contact.name} class="size-20 flex-none rounded-full object-cover" />
+            : <Placeholder class="size-20 flex-none rounded-full !p-0 text-[.6rem]" label="Photo" />}
+          <div>
+            <p class="text-sm font-bold text-gold">Point of contact</p>
+            <h2 class="text-lg font-bold">{contact.name}</h2>
+            <p class="text-sm text-muted">{contact.role}</p>
+          </div>
+        </div>
+
+        <dl class="grid gap-3 sm:grid-cols-2">
+          {info.map(([label, value, href, cta]) => (
+            <div class="rounded-2xl bg-white p-4 shadow-sm">
+              <dt class="mb-1 text-sm font-bold text-gold">{label}</dt>
+              <dd class="mb-2 text-sm">{value}</dd>
+              <a href={href} class="text-sm font-bold text-forest underline decoration-gold decoration-2 underline-offset-4" target={href.startsWith('http') ? '_blank' : undefined} rel="noopener">{cta}</a>
+            </div>
+          ))}
+          <div class="rounded-2xl bg-white p-4 shadow-sm sm:col-span-2">
+            <dt class="mb-1 text-sm font-bold text-gold">Meeting schedule</dt>
+            <dd class="text-sm">{contact.hours}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <form id="contact-form" novalidate class="grid gap-4 rounded-2xl bg-white p-5 shadow-sm md:p-7">
+        <h2 class="font-display text-2xl font-bold">Send a message</h2>
+        <div>
+          <label for="n" class="text-sm font-bold">Name</label>
+          <input id="n" name="name" required autocomplete="name" class={field} />
+          <p class="mt-1 hidden text-sm text-red-700" data-err="n">Enter your name.</p>
+        </div>
+        <div>
+          <label for="e" class="text-sm font-bold">Email</label>
+          <input id="e" type="email" name="email" required autocomplete="email" class={field} />
+          <p class="mt-1 hidden text-sm text-red-700" data-err="e">Enter a valid email address.</p>
+        </div>
+        <div>
+          <label for="t" class="text-sm font-bold">Topic</label>
+          <select id="t" name="topic" class={field}>
+            <option>General question</option>
+            <option>Recruitment</option>
+            <option>Project or partnership</option>
+          </select>
+        </div>
+        <div>
+          <label for="m" class="text-sm font-bold">Message</label>
+          <textarea id="m" name="message" required rows="5" class={field}></textarea>
+          <p class="mt-1 hidden text-sm text-red-700" data-err="m">Write a short message.</p>
+        </div>
+        <button type="submit" class={`${btnGold} justify-self-start`}>Send message</button>
+        <p id="form-ok" role="status" class="hidden rounded-md bg-forest p-3 text-sm font-semibold text-white">Thanks. We received your message and will reply soon.</p>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const $ = (s: string) => document.querySelector<HTMLElement>(s)!;
+  const form = $('#contact-form') as unknown as HTMLFormElement;
+  const rules: Record<string, (v: string) => boolean> = {
+    n: (v) => v.trim().length > 1,
+    e: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    m: (v) => v.trim().length > 4,
+  };
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    let ok = true;
+    for (const id in rules) {
+      const input = $('#' + id) as HTMLInputElement;
+      const valid = rules[id](input.value);
+      input.setAttribute('aria-invalid', String(!valid));
+      $(`[data-err=${id}]`).classList.toggle('hidden', valid);
+      if (!valid && ok) { input.focus(); ok = false; }
+    }
+    if (ok) {
+      // TODO: send to Formspree / Netlify Forms / your own endpoint here
+      form.reset();
+      $('#form-ok').classList.remove('hidden');
+    }
+  });
+</script>

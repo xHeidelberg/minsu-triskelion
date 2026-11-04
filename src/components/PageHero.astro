@@ -1,0 +1,12 @@
+---
+import { wrap } from '../data/ui';
+const { title, intro } = Astro.props;
+---
+<section class="bg-forest text-white">
+  <div class={`${wrap} py-14 md:py-20`}>
+    <p class="mb-3 text-sm font-bold text-gold"><a href="/" class="hover:underline">Home</a> / {title}</p>
+    <h1 class="mb-4 font-display text-4xl font-bold leading-tight md:text-5xl">{title}</h1>
+    <p class="max-w-[60ch] text-cream/85">{intro}</p>
+  </div>
+  <div class="h-1.5 bg-gold"></div>
+</section>

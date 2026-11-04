@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { officers, contact } from '../data/site';
+import { wrap, section, h2, btnGold } from '../data/ui';
+const [grand, ...rest] = officers;
+---
+<Layout title="Leadership">
+  <PageHero title="Leadership" intro="Meet the officers who guide the chapter, and see what each position is responsible for." />
+
+  <section class={section}>
+    <div class={wrap}>
+      <article class="mb-8 grid overflow-hidden rounded-2xl bg-forest text-white md:grid-cols-[2fr_3fr]">
+        {grand.img
+          ? <img src={grand.img} alt={grand.position} class="aspect-[4/3] size-full object-cover md:aspect-auto" />
+          : <Placeholder class="aspect-[4/3] md:aspect-auto" label="Photo (public/images/officers/)" />}
+        <div class="flex flex-col justify-center p-6 md:p-10">
+          <p class="mb-1 text-sm font-bold text-gold">{grand.position}</p>
+          <h2 class="font-display text-3xl font-bold">{grand.name}</h2>
+          <p class="mb-4 text-sm text-cream/70">{grand.term}</p>
+          <ul class="grid gap-2 text-cream/90">
+            {grand.duties.map((d) => (<li class="flex gap-2"><span class="text-gold" aria-hidden="true">–</span>{d}</li>))}
+          </ul>
+        </div>
+      </article>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {rest.map((o) => (
+          <article class="overflow-hidden rounded-xl border border-ink/10 bg-white transition hover:-translate-y-1 hover:border-gold">
+            {o.img
+              ? <img src={o.img} alt={o.position} class="aspect-[4/5] w-full object-cover" />
+              : <Placeholder class="aspect-[4/5] text-xs" />}
+            <div class="border-t-2 border-gold p-4">
+              <h3 class="font-bold">{o.name}</h3>
+              <p class="text-sm font-bold text-forest">{o.position}</p>
+              <p class="mb-3 text-xs text-muted">{o.term}</p>
+              <ul class="grid gap-1.5 text-sm text-muted">
+                {o.duties.map((d) => (<li class="flex gap-2"><span class="text-gold" aria-hidden="true">–</span>{d}</li>))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class={`${section} bg-cream`}>
+    <div class={`${wrap} grid items-center gap-8 md:grid-cols-[auto_1fr_auto]`}>
+      {contact.img
+        ? <img src={contact.img} alt={contact.name} class="size-24 rounded-full object-cover" />
+        : <Placeholder class="size-24 rounded-full !p-0 text-[.6rem]" label="Photo" />}
+      <div>
+        <h2 class="font-display text-2xl font-bold">{contact.name}</h2>
+        <p class="text-sm font-bold text-forest">{contact.role}</p>
+        <p class="mt-2 max-w-[55ch] text-muted">Our point of contact for questions, partnerships, and invitations. Reach out and we will reply as soon as we can.</p>
+      </div>
+      <a href="/contact" class={btnGold}>Contact us</a>
+    </div>
+  </section>
+</Layout>

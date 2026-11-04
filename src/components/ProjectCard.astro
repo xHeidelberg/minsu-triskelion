@@ -1,0 +1,15 @@
+---
+const { p } = Astro.props;
+import Placeholder from './Placeholder.astro';
+---
+<article data-category={p.category} class="overflow-hidden rounded-2xl bg-white shadow-sm">
+  {p.img
+    ? <img src={p.img} alt={p.title} class="aspect-[16/10] w-full object-cover" />
+    : <Placeholder class="aspect-[16/10]" label="Project photo" />}
+  <div class="p-5">
+    <p class="mb-1 text-sm font-bold text-gold">{p.category}</p>
+    <h3 class="mb-1.5 font-display text-lg font-bold">{p.title}</h3>
+    <p class="mb-3 text-sm text-muted">{p.text}</p>
+    <p class="text-xs font-semibold text-ink/70">{p.date} · {p.place}</p>
+  </div>
+</article>

@@ -1,11 +1,111 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Placeholder from '../components/Placeholder.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, heroImages, officers, projects } from '../data/site';
+import { wrap, section, h2, btnGold, btnLine, btnDark } from '../data/ui';
+const years = new Date().getFullYear() - site.foundedYear;
+const grand = officers[0];
 ---
-
 <Layout>
-	<Welcome />
+  <!-- Hero: automatic image slideshow (no user controls) -->
+  <section class="relative isolate overflow-hidden bg-forest text-white">
+    <div class="pointer-events-none absolute inset-0 -z-10 select-none" aria-hidden="true">
+      {heroImages.map((src, i) => (
+        <img src={src} alt="" data-slide loading="eager" fetchpriority={i === 0 ? 'high' : 'auto'} draggable="false"
+          onerror="this.style.display='none'"
+          class:list={['absolute inset-0 size-full object-cover transition-opacity duration-1000 motion-reduce:transition-none', i === 0 ? 'opacity-100' : 'opacity-0']} />
+      ))}
+      <div class="absolute inset-0 bg-linear-to-r from-deep/90 via-deep/65 to-deep/30"></div>
+    </div>
+    <div class={`${wrap} flex min-h-[80svh] items-center py-16 md:py-24`}>
+      <div class="max-w-2xl">
+        <p class="mb-4 text-sm font-bold text-gold">{site.org} · Since {site.founded}</p>
+        <h1 class="mb-5 font-display text-4xl font-bold leading-[1.1] md:text-6xl">Brotherhood that serves the community</h1>
+        <p class="mb-8 max-w-[46ch] text-cream/90">The {site.name} chapter brings brods together to learn, lead, and give back in Bongabong, Oriental Mindoro.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/recruitment" class={btnGold}>Join us</a>
+          <a href="/about" class={btnLine}>Who we are</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facts -->
+  <section class="bg-gold text-ink">
+    <dl class={`${wrap} grid divide-y divide-ink/20 text-center sm:grid-cols-3 sm:divide-x sm:divide-y-0`}>
+      <div class="py-4"><dt class="text-sm font-semibold">Chapter founded</dt><dd class="font-display text-xl font-bold">{site.founded}</dd></div>
+      <div class="py-4"><dt class="text-sm font-semibold">Years of service</dt><dd class="font-display text-xl font-bold">{years} years</dd></div>
+      <div class="py-4"><dt class="text-sm font-semibold">Based in</dt><dd class="font-display text-xl font-bold">Brgy. Labasa, Bongabong</dd></div>
+    </dl>
+  </section>
+
+  <!-- About teaser -->
+  <section class={`${section} bg-cream`}>
+    <div class={`${wrap} grid items-center gap-10 md:grid-cols-2 md:gap-14`}>
+      <Placeholder class="order-2 aspect-[4/3] rounded-2xl md:order-1" label="About photo placeholder" />
+      <div class="order-1 md:order-2">
+        <h2 class={`${h2} mb-4`}>Who we are</h2>
+        <p class="mb-6 max-w-[60ch] text-muted">{site.name} is the {site.org} chapter of Mindoro State University, Bongabong. We are a brotherhood of students and alumni who train as leaders and serve our community.</p>
+        <a href="/about" class={btnDark}>Read our story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership teaser -->
+  <section class={section}>
+    <div class={wrap}>
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <h2 class={h2}>Our leadership</h2>
+        <a href="/leadership" class="font-bold text-forest underline decoration-gold decoration-2 underline-offset-4">See all officers</a>
+      </div>
+      <article class="grid overflow-hidden rounded-2xl bg-forest text-white sm:grid-cols-[2fr_3fr]">
+        {grand.img
+          ? <img src={grand.img} alt={grand.position} class="aspect-[4/3] size-full object-cover sm:aspect-auto" />
+          : <Placeholder class="aspect-[4/3] sm:aspect-auto" />}
+        <div class="flex flex-col justify-center p-6 md:p-10">
+          <p class="mb-1 text-sm font-bold text-gold">{grand.position}</p>
+          <h3 class="font-display text-2xl font-bold md:text-3xl">{grand.name}</h3>
+          <p class="mt-3 max-w-[50ch] text-cream/80">{grand.duties[0]}. {grand.duties[1]}.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Projects teaser -->
+  <section class={`${section} bg-cream`}>
+    <div class={wrap}>
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <h2 class={h2}>Recent projects</h2>
+        <a href="/projects" class="font-bold text-forest underline decoration-gold decoration-2 underline-offset-4">See all projects</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.slice(0, 3).map((p) => <ProjectCard p={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recruitment CTA -->
+  <section class={`${section} bg-ink text-white`}>
+    <div class={`${wrap} flex flex-wrap items-center justify-between gap-6`}>
+      <div>
+        <h2 class={`${h2} mb-3`}>Become a Triskelion</h2>
+        <p class="max-w-[52ch] text-cream/80">Learn what it takes to join the chapter and how to get started.</p>
+      </div>
+      <a href="/recruitment" class={btnGold}>See how to join</a>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  // Hero slideshow: changes by itself every 5 seconds
+  const slides = [...document.querySelectorAll<HTMLElement>('[data-slide]')];
+  if (slides.length > 1) {
+    let cur = 0;
+    setInterval(() => {
+      slides[cur].classList.replace('opacity-100', 'opacity-0');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.replace('opacity-0', 'opacity-100');
+    }, 5000);
+  }
+</script>

@@ -1,0 +1,7 @@
+---
+// Stand-in for a photo. Pass sizing/shape classes via `class`.
+const { label = 'Photo placeholder', class: cls = '' } = Astro.props;
+---
+<div class:list={['grid place-items-center bg-linear-to-br from-[#1d4a3b] to-deep p-5 text-center text-sm text-cream/70', cls]}>
+  {label}
+</div>

@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel", Georgia, serif;
+
+  /* Dark green, gold, white, cream, black */
+  --color-forest: #14352a;
+  --color-deep: #0c1f19;
+  --color-gold: #c9a227;
+  --color-gold-soft: #e3c866;
+  --color-cream: #f5efe0;
+  --color-ink: #0a0a0a;
+  --color-muted: #5b5f57;
+}

@@ -1,0 +1,41 @@
+---
+import { nav, site, contact } from '../data/site';
+import { wrap } from '../data/ui';
+---
+<footer class="bg-ink text-cream/75">
+  <div class={`${wrap} grid gap-10 py-12 md:grid-cols-3`}>
+    <div>
+      <p class="mb-3 font-display text-lg font-bold text-white">{site.name}</p>
+      <p class="text-sm">{site.org} chapter, founded {site.founded}.</p>
+    </div>
+    <div>
+      <p class="mb-3 font-bold text-gold">Pages</p>
+      <ul class="grid gap-2 text-sm">
+        {nav.map(([label, href]) => (<li><a href={href} class="hover:text-gold-soft">{label}</a></li>))}
+      </ul>
+    </div>
+    <div>
+      <p class="mb-3 font-bold text-gold">Contact</p>
+      <ul class="grid gap-2 text-sm">
+        <li>{site.address}</li>
+        <li>{contact.name}, {contact.role}</li>
+        <li><a href={`mailto:${contact.email}`} class="hover:text-gold-soft">{contact.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="border-t border-white/10 py-5 text-center text-sm">© 2026 {site.name} · {site.org}</p>
+</footer>
+
+<button id="to-top" type="button" aria-label="Back to top" class="fixed bottom-5 right-5 z-20 hidden size-12 place-items-center rounded-full bg-gold text-ink shadow-lg hover:bg-gold-soft">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+  const top = document.getElementById('to-top')!;
+  const onScroll = () => {
+    top.classList.toggle('hidden', scrollY < 600);
+    top.classList.toggle('grid', scrollY >= 600);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  top.addEventListener('click', () => scrollTo({ top: 0 }));
+</script>

@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/site';
+import { wrap, section, btnGold } from '../data/ui';
+const cats = ['All', ...new Set(projects.map((p) => p.category))];
+---
+<Layout title="Projects">
+  <PageHero title="Projects" intro="Community service, learning, and brotherhood activities the chapter has organized." />
+
+  <section class={`${section} bg-cream`}>
+    <div class={wrap}>
+      <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+        {cats.map((c, i) => (
+          <button type="button" data-filter={c} aria-pressed={i === 0 ? 'true' : 'false'}
+            class="min-h-11 rounded-full border border-ink/25 bg-white px-5 text-sm font-bold aria-pressed:border-forest aria-pressed:bg-forest aria-pressed:text-white">{c}</button>
+        ))}
+      </div>
+      <div id="grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p) => <ProjectCard p={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class={`${section} bg-ink text-white`}>
+    <div class={`${wrap} flex flex-wrap items-center justify-between gap-6`}>
+      <div>
+        <h2 class="mb-2 font-display text-3xl font-bold">Have a project in mind?</h2>
+        <p class="max-w-[52ch] text-cream/80">Invite the chapter to join your activity or partner with us.</p>
+      </div>
+      <a href="/contact" class={btnGold}>Get in touch</a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const btns = [...document.querySelectorAll<HTMLElement>('[data-filter]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('#grid [data-category]')];
+  btns.forEach((b) => b.addEventListener('click', () => {
+    btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    cards.forEach((c) => c.classList.toggle('hidden', b.dataset.filter !== 'All' && c.dataset.category !== b.dataset.filter));
+  }));
+</script>

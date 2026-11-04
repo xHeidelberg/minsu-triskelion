@@ -1,0 +1,58 @@
+---
+import { nav, site } from '../data/site';
+import { wrap, btnGold } from '../data/ui';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<header id="site-header" class="sticky top-0 z-30 bg-forest text-white transition-shadow">
+  <div class={`${wrap} flex items-center justify-between gap-4 py-3`}>
+    <a href="/" class="flex items-center gap-3">
+      <div class="grid size-11 flex-none place-items-center rounded-full border-2 border-dashed border-gold text-center text-[.55rem] leading-tight text-gold-soft">Logo here</div>
+      <span class="font-display text-base font-bold leading-tight md:text-lg">MinSU Bongabong<br class="md:hidden" /> Triskelion</span>
+    </a>
+
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex gap-7 text-sm font-semibold">
+        {nav.map(([label, href]) => (
+          <li><a href={href} aria-current={isActive(href) ? 'page' : undefined}
+            class="border-b-2 border-transparent py-1 hover:text-gold-soft aria-[current=page]:border-gold aria-[current=page]:text-gold">{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="/recruitment" class={`${btnGold} hidden lg:inline-flex`}>Join us</a>
+
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"
+      class="grid size-11 place-items-center rounded-md border border-white/30 lg:hidden">
+      <svg id="ico-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg id="ico-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-deep lg:hidden">
+    <ul class={`${wrap} grid py-2`}>
+      {nav.map(([label, href]) => (
+        <li><a href={href} aria-current={isActive(href) ? 'page' : undefined}
+          class="block border-b border-white/10 py-3.5 font-semibold aria-[current=page]:text-gold">{label}</a></li>
+      ))}
+      <li class="py-4"><a href="/recruitment" class={`${btnGold} w-full`}>Join us</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const header = document.getElementById('site-header')!;
+  const setMenu = (open: boolean) => {
+    menu.classList.toggle('hidden', !open);
+    document.getElementById('ico-open')!.classList.toggle('hidden', open);
+    document.getElementById('ico-close')!.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  btn.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
+  const shadow = () => header.classList.toggle('shadow-lg', scrollY > 10);
+  addEventListener('scroll', shadow, { passive: true }); shadow();
+</script>
