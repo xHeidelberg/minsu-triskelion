@@ -55,6 +55,12 @@ const info = [
   </div>
 
   <div>
+    <label for="s" class="text-sm font-bold">Subjet</label>
+    <input id="s" name="subject" required autocomplete="subject" class={field} />
+    <p class="mt-1 hidden text-sm text-red-700" data-err="s">Subject.</p>
+  </div>
+
+  <div>
     <label for="e" class="text-sm font-bold">Email</label>
     <input id="e" type="email" name="email" required autocomplete="email" class={field} />
     <p class="mt-1 hidden text-sm text-red-700" data-err="e">Enter a valid email address.</p>
@@ -109,6 +115,7 @@ const info = [
 
   const rules: Record<string, (v: string) => boolean> = {
     n: (v) => v.trim().length > 1,
+    s: (v) => v.trim().length > 1,
     e: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
     m: (v) => v.trim().length > 4,
   };

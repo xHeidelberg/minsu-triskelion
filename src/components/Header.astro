@@ -9,10 +9,11 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 <header id="site-header" class="sticky top-0 z-30 bg-forest text-white transition-shadow">
   <div class={`${wrap} flex items-center justify-between gap-4 py-3`}>
     <a href="/" class="flex items-center gap-3">
-      <Image src={logow} alt="MinSU Bongabong Triskelion logo" width={44} height={44} loading="eager" class="size-11 flex-none rounded-full object-contain " />
+      <Image src={logow} alt="MinSU Bongabong Triskelion logo" width={44} height={44} loading="eager" class="size-11 flex-none rounded-full object-contain" />
       <span class="font-display text-base font-bold leading-tight md:text-lg">MinSU Bongabong<br class="md:hidden" /> Chapter</span>
     </a>
 
+    <!-- Desktop Navigation Links -->
     <nav aria-label="Main" class="hidden lg:block">
       <ul class="flex gap-7 text-sm font-semibold">
         {nav.map(([label, href]) => (
@@ -22,8 +23,12 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       </ul>
     </nav>
 
-    <a href="/recruitment" class={`${btnGold} hidden lg:inline-flex`}>Join us</a>
+    <!-- Desktop "Join us" button wrapped for clean responsive visibility -->
+    <div class="hidden lg:block">
+      <a href="/recruitment" class={btnGold}>Join us</a>
+    </div>
 
+    <!-- Mobile Hamburger Menu Button -->
     <button id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"
       class="grid size-11 place-items-center rounded-md border border-white/30 lg:hidden">
       <svg id="ico-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -31,13 +36,16 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-white/1 bg-deep lg:hidden">
-    <ul class={`${wrap} grid py-2`}>
+  <!-- Mobile Drawer Menu (Visible only on mobile when toggled) -->
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-deep lg:hidden">
+    <ul class={`${wrap} grid py-3 gap-2`}>
       {nav.map(([label, href]) => (
         <li><a href={href} aria-current={isActive(href) ? 'page' : undefined}
-          class="block border-b border-white/1 py-3.5 font-semibold aria-[current=page]:text-gold">{label}</a></li>
+          class="block border-b border-white/10 py-3 font-semibold aria-[current=page]:text-gold">{label}</a></li>
       ))}
-      <li class="py-1"><a href="/recruitment" class={`${btnGold} w-full`}>Join us</a></li>
+      <li class="pt-3 pb-2">
+        <a href="/recruitment" class={`${btnGold} block text-center w-full`}>Join us</a>
+      </li>
     </ul>
   </div>
 </header>
