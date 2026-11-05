@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import Placeholder from '../components/Placeholder.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { site, heroImages, officers, projects } from '../data/site';
 import { wrap, section, h2, btnGold, btnLine, btnDark } from '../data/ui';
+import aboutImg from '../assets/about.jpeg';
 const years = new Date().getFullYear() - site.foundedYear;
 const grand = officers[0];
 ---
@@ -19,38 +21,77 @@ const grand = officers[0];
       <div class="absolute inset-0 bg-linear-to-r from-deep/90 via-deep/65 to-deep/30"></div>
     </div>
     <div class={`${wrap} flex min-h-[80svh] items-center py-16 md:py-24`}>
-      <div class="max-w-2xl">
-        <p class="mb-4 text-sm font-bold text-gold">{site.org} · Since {site.founded}</p>
-        <h1 class="mb-5 font-display text-4xl font-bold leading-[1.1] md:text-6xl">Brotherhood that serves the community</h1>
-        <p class="mb-8 max-w-[46ch] text-cream/90">The {site.name} chapter brings brods together to learn, lead, and give back in Bongabong, Oriental Mindoro.</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="/recruitment" class={btnGold}>Join us</a>
-          <a href="/about" class={btnLine}>Who we are</a>
-        </div>
-      </div>
+  <div class="max-w-2xl">
+    <!-- Eyebrow Badge -->
+    <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs font-bold tracking-wide text-gold uppercase backdrop-blur-sm">
+      <span>{site.org}</span>
+      <span class="text-gold/40">•</span>
+      <span>Mindoro State University - Bongabong Chapter</span>
+      <span class="text-gold/40">•</span>
+      <span>Est. {site.founded}</span>
     </div>
+
+    <!-- Main Headline -->
+    <h1 class="mb-5 font-display text-4xl font-extrabold tracking-tight leading-[1.1] text-white md:text-6xl">
+      United in Brotherhood.<br class="hidden sm:inline" /> Driven by Service.
+    </h1>
+
+    <!-- Subtitle / Intro Text -->
+    <p class="mb-8 max-w-[52ch] text-base leading-relaxed text-cream/90 md:text-lg">
+Empowering Triskelions to lead with integrity, pursue academic excellence, and forge exemplary character—driving meaningful impact across Mindoro State University and beyond through active collaboration with collegiate and community chapters, municipal councils, and provincial governance networks.    </p>
+
+    <!-- Calls to Action -->
+    <div class="flex flex-wrap items-center gap-4">
+      <a href="/recruitment" class={`${btnGold} transition-transform hover:-translate-y-0.5 shadow-lg shadow-gold/10`}>
+        Join Us
+      </a>
+      <a href="/about" class={`${btnLine} transition-all hover:bg-white/10`}>
+        Explore Our Legacy
+      </a>
+    </div>
+  </div>
+</div>
   </section>
 
   <!-- Facts -->
   <section class="bg-gold text-ink">
-    <dl class={`${wrap} grid divide-y divide-ink/20 text-center sm:grid-cols-3 sm:divide-x sm:divide-y-0`}>
-      <div class="py-4"><dt class="text-sm font-semibold">Chapter founded</dt><dd class="font-display text-xl font-bold">{site.founded}</dd></div>
-      <div class="py-4"><dt class="text-sm font-semibold">Years of service</dt><dd class="font-display text-xl font-bold">{years} years</dd></div>
-      <div class="py-4"><dt class="text-sm font-semibold">Based in</dt><dd class="font-display text-xl font-bold">Brgy. Labasa, Bongabong</dd></div>
-    </dl>
-  </section>
+  <dl class={`${wrap} grid divide-y divide-ink/20 text-center sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x`}>
+    <div class="py-4 px-2">
+      <dt class="text-sm font-semibold">Service Hours</dt>
+        <dd class="font-display text-2xl font-bold">
+          {site.hrsService}+
+          <br>
+          <span class="text-xs font-normal opacity-80">as of Academic Year '26-'27</span>
+        </dd>
+    </div>
+    <div class="py-4 px-2">
+      <dt class="text-sm font-semibold">Chapter founded</dt>
+      <dd class="font-display text-lg font-bold">{site.founded}</dd>
+    </div>
+    <div class="py-4 px-2">
+      <dt class="text-sm font-semibold">Years of service</dt>
+      <dd class="font-display text-xl font-bold">{years} years</dd>
+    </div>
+    <div class="py-4 px-2">
+      <dt class="text-sm font-semibold">Based in</dt>
+      <dd class="font-display text-lg font-bold">Brgy. Labasan, Bongabong, Oriental Mindoro</dd>
+    </div>
+  </dl>
+</section>
 
   <!-- About teaser -->
   <section class={`${section} bg-cream`}>
-    <div class={`${wrap} grid items-center gap-10 md:grid-cols-2 md:gap-14`}>
-      <Placeholder class="order-2 aspect-[4/3] rounded-2xl md:order-1" label="About photo placeholder" />
-      <div class="order-1 md:order-2">
-        <h2 class={`${h2} mb-4`}>Who we are</h2>
-        <p class="mb-6 max-w-[60ch] text-muted">{site.name} is the {site.org} chapter of Mindoro State University, Bongabong. We are a brotherhood of students and alumni who train as leaders and serve our community.</p>
-        <a href="/about" class={btnDark}>Read our story</a>
-      </div>
+  <div class={`${wrap} grid items-center gap-10 md:grid-cols-2 md:gap-14`}>
+    <Image src={aboutImg} alt="Who We Are" class="order-2 aspect-[4/3] w-full rounded-2xl object-cover md:order-1" />
+    <div class="order-1 md:order-2">
+      <h2 class={`${h2} mb-4`}>Who We Are</h2>
+      <p class="mb-6 max-w-[60ch] text-muted">
+        The {site.name} ({site.org}) is an official academic and community-oriented student chapter dedicated to cultivating principled leadership, academic excellence, and enduring brotherhood across Mindoro State University.
+      </p>
+      <a href="/about" class={btnDark}>Read Our Story</a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Leadership teaser -->
   <section class={section}>

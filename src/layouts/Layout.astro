@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import logo from '../assets/logo2.png';
+import aboutImg from '../assets/about.jpeg'
 const { title = 'MinSU Bongabong Triskelion' } = Astro.props;
 const full = title === 'MinSU Bongabong Triskelion' ? title : `${title} · MinSU Bongabong Triskelion`;
 ---
@@ -13,6 +15,8 @@ const full = title === 'MinSU Bongabong Triskelion' ? title : `${title} · MinSU
     <meta name="theme-color" content="#14352a" />
     <meta name="description" content="Tau Gamma Phi, MinSU Bongabong chapter. Founded July 27, 2007." />
     <title>{full}</title>
+    <meta name="theme-color" content="#14352a" />
+    <link rel="icon" href={logo.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />

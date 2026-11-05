@@ -43,49 +43,81 @@ const info = [
         </dl>
       </div>
 
-      <form id="contact-form" novalidate class="grid gap-4 rounded-2xl bg-white p-5 shadow-sm md:p-7">
-        <h2 class="font-display text-2xl font-bold">Send a message</h2>
-        <div>
-          <label for="n" class="text-sm font-bold">Name</label>
-          <input id="n" name="name" required autocomplete="name" class={field} />
-          <p class="mt-1 hidden text-sm text-red-700" data-err="n">Enter your name.</p>
-        </div>
-        <div>
-          <label for="e" class="text-sm font-bold">Email</label>
-          <input id="e" type="email" name="email" required autocomplete="email" class={field} />
-          <p class="mt-1 hidden text-sm text-red-700" data-err="e">Enter a valid email address.</p>
-        </div>
-        <div>
-          <label for="t" class="text-sm font-bold">Topic</label>
-          <select id="t" name="topic" class={field}>
-            <option>General question</option>
-            <option>Recruitment</option>
-            <option>Project or partnership</option>
-          </select>
-        </div>
-        <div>
-          <label for="m" class="text-sm font-bold">Message</label>
-          <textarea id="m" name="message" required rows="5" class={field}></textarea>
-          <p class="mt-1 hidden text-sm text-red-700" data-err="m">Write a short message.</p>
-        </div>
-        <button type="submit" class={`${btnGold} justify-self-start`}>Send message</button>
-        <p id="form-ok" role="status" class="hidden rounded-md bg-forest p-3 text-sm font-semibold text-white">Thanks. We received your message and will reply soon.</p>
-      </form>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<form id="contact-form" novalidate class="grid gap-4 rounded-2xl bg-white p-5 shadow-sm md:p-7">
+  <h2 class="font-display text-2xl font-bold">Send a message</h2>
+  
+  <div>
+    <label for="n" class="text-sm font-bold">Name</label>
+    <input id="n" name="name" required autocomplete="name" class={field} />
+    <p class="mt-1 hidden text-sm text-red-700" data-err="n">Enter your name.</p>
+  </div>
+
+  <div>
+    <label for="e" class="text-sm font-bold">Email</label>
+    <input id="e" type="email" name="email" required autocomplete="email" class={field} />
+    <p class="mt-1 hidden text-sm text-red-700" data-err="e">Enter a valid email address.</p>
+  </div>
+
+  <div>
+    <label for="t" class="text-sm font-bold">Topic</label>
+    <select id="t" name="topic" class={field}>
+      <option>General question</option>
+      <option>Recruitment</option>
+      <option>Project or partnership</option>
+      <option>File Confirmation</option>
+      <option>Alumni Affairs</option>
+      <option>Schedule a Visit</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="m" class="text-sm font-bold">Message</label>
+    <textarea id="m" name="message" required rows="5" class={field}></textarea>
+    <p class="mt-1 hidden text-sm text-red-700" data-err="m">Write a short message.</p>
+  </div>
+
+  <!-- Formspree reCAPTCHA Container -->
+  <div>
+  <!-- replace localhost site key if deployed -->
+    <div class="g-recaptcha" data-sitekey="6LerDxIuAAAAAP0NovKPYaRT46aYt7qnN35ta_8n"></div>
+    <p id="captcha-err" class="mt-1 hidden text-sm text-red-700">Please complete the reCAPTCHA check.</p>
+  </div>
+
+  <button type="submit" class={`${btnGold} justify-self-start`}>Send message</button>
+  <p id="form-ok" role="status" class="hidden rounded-md bg-forest p-3 text-sm font-semibold text-white">Thanks. We received your message and will reply soon.</p>
+</form>
     </div>
   </section>
 </Layout>
 
 <script>
+  // Add TypeScript declaration for window.grecaptcha
+  declare global {
+    interface Window {
+      grecaptcha: {
+        getResponse: () => string;
+        reset: () => void;
+      };
+    }
+  }
+
   const $ = (s: string) => document.querySelector<HTMLElement>(s)!;
   const form = $('#contact-form') as unknown as HTMLFormElement;
+  const ENDPOINT = 'https://formspree.io/f/xyeevdbq';
+
   const rules: Record<string, (v: string) => boolean> = {
     n: (v) => v.trim().length > 1,
     e: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
     m: (v) => v.trim().length > 4,
   };
-  form.addEventListener('submit', (ev) => {
+
+  form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     let ok = true;
+
+    // Standard input validation
     for (const id in rules) {
       const input = $('#' + id) as HTMLInputElement;
       const valid = rules[id](input.value);
@@ -93,10 +125,34 @@ const info = [
       $(`[data-err=${id}]`).classList.toggle('hidden', valid);
       if (!valid && ok) { input.focus(); ok = false; }
     }
-    if (ok) {
-      // TODO: send to Formspree / Netlify Forms / your own endpoint here
-      form.reset();
-      $('#form-ok').classList.remove('hidden');
+
+    // reCAPTCHA verification check
+    const recaptchaResponse = window.grecaptcha?.getResponse() || '';
+    const captchaErr = $('#captcha-err');
+    const isCaptchaValid = recaptchaResponse.length > 0;
+    
+    captchaErr.classList.toggle('hidden', isCaptchaValid);
+    if (!isCaptchaValid && ok) {
+      ok = false;
     }
+
+    if (!ok) return;
+
+    const okMsg = $('#form-ok');
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+
+      if (!res.ok) throw new Error();
+      form.reset();
+      window.grecaptcha?.reset(); // Reset CAPTCHA widget on success
+      okMsg.textContent = 'Thanks. We received your message and will reply soon.';
+    } catch {
+      okMsg.textContent = 'Sorry, the message could not be sent. Please try again or email us directly.';
+    }
+    okMsg.classList.remove('hidden');
   });
 </script>

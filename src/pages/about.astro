@@ -4,78 +4,298 @@ import PageHero from '../components/PageHero.astro';
 import Placeholder from '../components/Placeholder.astro';
 import { site, values } from '../data/site';
 import { wrap, section, h2, btnGold } from '../data/ui';
+
 const years = new Date().getFullYear() - site.foundedYear;
 ---
-<Layout title="About Us">
-  <PageHero title="About Us" intro={`Learn who we are, what we do, and what we stand for as the ${site.org} chapter in Bongabong.`} />
 
-  <section class={`${section} bg-cream`}>
+<Layout title="About Us">
+  <!-- Hero Banner -->
+  <PageHero 
+    title="Our Heritage & Purpose" 
+    intro={`Discover the story, values, and community impact of the ${site.org} chapter at Mindoro State University - Bongabong.`} 
+  />
+
+  <!-- 1. Who We Are Section -->
+  <section class={`${section} bg-white overflow-hidden`}>
     <div class={`${wrap} grid items-center gap-10 md:grid-cols-2 md:gap-14`}>
-      <Placeholder class="order-2 aspect-[4/3] rounded-2xl md:order-1" label="About photo placeholder (public/images/about/)" />
-      <div class="order-1 md:order-2">
-        <h2 class={`${h2} mb-6`}>Our chapter</h2>
-        <div role="tablist" aria-label="About" class="mb-5 inline-flex rounded-lg bg-white p-1 shadow-sm">
-          <button role="tab" id="tab-who" aria-controls="panel-who" aria-selected="true" class="min-h-11 rounded-md px-5 text-sm font-bold aria-selected:bg-forest aria-selected:text-white">Who we are</button>
-          <button role="tab" id="tab-what" aria-controls="panel-what" aria-selected="false" class="min-h-11 rounded-md px-5 text-sm font-bold aria-selected:bg-forest aria-selected:text-white">What we do</button>
-        </div>
-        <div id="panel-who" role="tabpanel" aria-labelledby="tab-who" class="grid max-w-[60ch] gap-3 text-muted">
-          <p>{site.name} is the {site.org} chapter of Mindoro State University, Bongabong Campus. We were founded on {site.founded} and have served for {years} years.</p>
-          <p>Replace this paragraph with how the chapter started, who founded it, and what it has grown into.</p>
-        </div>
-        <div id="panel-what" role="tabpanel" aria-labelledby="tab-what" hidden class="grid max-w-[60ch] gap-3 text-muted">
-          <p>We organize chapter meetings, outreach, education activities, and community service projects across Bongabong.</p>
-          <p>Replace this paragraph with the work your chapter is proud of. See our <a href="/projects" class="font-bold text-forest underline decoration-gold decoration-2">projects page</a> for examples.</p>
+      <div class="relative group" data-aos="fade-right">
+        <div class="absolute -inset-2 rounded-2xl bg-gradient-to-r from-gold/30 to-forest/30 blur-lg opacity-70 group-hover:opacity-100 transition duration-500"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" 
+          alt="Triskelion Brotherhood and Leadership" 
+          class="relative aspect-[4/3] w-full rounded-2xl object-cover shadow-xl transition-transform duration-500 group-hover:scale-[1.01]" 
+        />
+      </div>
+
+      <div data-aos="fade-left">
+        <span class="inline-block mb-2 text-xs font-bold uppercase tracking-wider text-gold">Identity & Culture</span>
+        <h2 class={`${h2} mb-5`}>Who We Are</h2>
+        <div class="grid gap-4 text-muted text-base leading-relaxed">
+          <p>
+            Founded on the core pillars of <strong>Brotherhood, Academic Excellence, and Service</strong>, the 
+            <strong>Tau Gamma Phi – Mindoro State University, Bongabong Chapter</strong> stands as a beacon of student leadership and unity within the campus community.
+          </p>
+          <p>
+            As Triskelions, we foster strong character, intellectual resilience, and lifelong camaraderie. Our chapter brings together driven students across disciplines who share a single mission: to lead with integrity, elevate one another, and embody the true spirit of the Triskelion Grand Fraternity.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 2. Fraternity History (National Origin) -->
+  <section class={`${section} bg-cream border-y border-forest/10`}>
+    <div class={`${wrap} max-w-4xl mx-auto text-center mb-12`} data-aos="fade-up">
+      <span class="inline-block mb-2 text-xs font-bold uppercase tracking-wider text-gold">National Roots</span>
+      <h2 class={`${h2} mb-4`}>The Origin of Tau Gamma Phi (ΤΓΦ)</h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        A legacy carved out of courage, reform, and an unyielding commitment to peace.
+      </p>
+    </div>
+
+    <div class={`${wrap} grid items-center gap-10 md:grid-cols-2 md:gap-14`}>
+      <div class="order-2 md:order-1" data-aos="fade-up" data-aos-delay="100">
+        <div class="space-y-4 text-muted leading-relaxed">
+          <p>
+            On <strong>October 4, 1968</strong>, amidst an era clouded by division and senseless conflict, a beacon of hope was ignited at the <span class="font-bold"> University of the Philippines, Diliman, Quezon City, Philippines </span>. Driven by courage and a profound love for humanity, visionary student leaders—our Four Founding Fathers: <em>Rod Confesor, Roy Ordinario, Talek Pablo, and Tito Venida</em>—rose to challenge the darkness of decadence and violence in the traditional fraternity system.
+          </p>
+          <p>
+            Out of this brave stand emerged the <strong>Tau Gamma Phi (Triskelions’ Grand Fraternity)</strong>—a protest movement anchored on the transformative conviction that <em>"Man is Brother unto Man."</em> Where others succumbed to hostility or passivity, our founders chose a path of peaceful strength, proving that light shines brightest when brothers stand united in truth and mutual respect.
+          </p>
+          <p>
+            From a courageous handful in UP CAS to a global movement hundreds of thousands strong, Tau Gamma Phi continues to be a worldwide symbol of hope, service, and excellence across generations.
+          </p>
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2" data-aos="fade-up" data-aos-delay="200">
+        <div class="relative">
+          <img 
+            src="https://upd.edu.ph/wp-content/uploads/2023/04/UPD-Oblation.jpg" 
+            alt="University History & Legacy" 
+            class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl border-4 border-white" 
+          />
+          <div class="absolute -bottom-6 -left-6 rounded-xl bg-forest p-4 text-white shadow-lg hidden sm:block">
+            <p class="font-display text-2xl font-bold text-gold">Oct 4, 1968</p>
+            <p class="text-xs text-cream/80 uppercase tracking-wide">UP Diliman Foundation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Chapter History (Mindoro State University - Bongabong) -->
+  <section class={`${section} bg-white overflow-hidden`}>
+  <div class={`${wrap} grid items-center gap-8 md:grid-cols-2 lg:gap-14`}>
+    
+    <!-- Left Column: Visual Media -->
+    <div data-aos="fade-right" class="relative w-full">
+      <div class="relative mx-auto max-w-lg md:max-w-none">
+        <img 
+          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
+          alt="Mindoro State University Campus Brotherhood" 
+          class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl" 
+          loading="lazy"
+          decoding="async"
+        />
+        
+        <!-- Floating Stat Badge (Responsive Positioned) -->
+        <div class="absolute -bottom-4 right-4 sm:-bottom-6 sm:-right-4 rounded-xl bg-gold px-4 py-3 sm:px-5 sm:py-4 text-forest shadow-lg">
+          <p class="font-display text-xl sm:text-2xl font-bold leading-none">{years}+ Years</p>
+          <p class="mt-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider opacity-90">Chartered & Serving</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Content Narrative -->
+    <div data-aos="fade-left" class="flex flex-col justify-center pt-4 md:pt-0">
+      <span class="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-gold">Chartered History</span>
+      <h2 class={`${h2} mb-4 sm:mb-6 leading-tight`}>Our Legacy in Bongabong</h2>
+      
+      <div class="space-y-4 text-muted text-sm sm:text-base leading-relaxed">
+        <p>
+          The establishment of the <strong class="text-forest font-semibold">Mindoro State University – Bongabong Chapter</strong> marks a defining milestone in our expansion. Officially chartered on <strong class="text-forest font-semibold">July 27, 2007</strong>, the chapter was built upon the vision, resilience, and dedication of its pioneering student-brethren within the host institution—then recognized as the Mindoro State College of Agriculture and Technology (MinSCAT) prior to its elevation to university status.
+        </p>
+        <p>
+          Driven by a shared commitment to leadership, academic integrity, and civic duty, the chapter established a structural foundation designed to endure institutional evolution.
+        <p>
+          To ensure structural integrity and alignment with provincial governance, the chapter's formal chartering was officially sponsored by the <strong class="text-forest font-semibold">Eastern Mindoro College (EMC) Chapter</strong>. This strategic sponsorship provided crucial mentorship.
+        </p>
+        <p>
+          Today, guided by the legacy of its founding pioneers, the chapter continues to write its story with every generation of scholars—upholding academic excellence, building character, and serving as a radiant pillar of positive change.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- 4. What We Do (Activities Showcase Grid) -->
+  <section class={`${section} bg-cream border-t border-forest/10`}>
+    <div class={wrap}>
+      <div class="max-w-2xl mb-12" data-aos="fade-up">
+        <span class="inline-block mb-2 text-xs font-bold uppercase tracking-wider text-gold">Community Action</span>
+        <h2 class={`${h2} mb-3`}>What We Do</h2>
+        <p class="text-muted text-lg">
+          We translate fraternal unity into real social impact across our campus and the Municipality of Bongabong.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Card 1 -->
+        <div class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+          <div class="overflow-hidden aspect-video">
+            <img 
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" 
+              alt="Coastal Cleanup and Environmental Drive" 
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2 text-forest">Environmental Stewardship</h3>
+            <p class="text-sm text-muted">
+              Organizing regular coastal cleanups, tree-planting drives, and campus sustainability projects to safeguard Mindoro's natural resources.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+          <div class="overflow-hidden aspect-video">
+            <img 
+              src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=800&q=80" 
+              alt="Blood Donation and Medical Missions" 
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2 text-forest">Health & Humanitarian Outreach</h3>
+            <p class="text-sm text-muted">
+              Partnering with health organizations for blood donation drives and relief efforts to aid local communities during emergencies.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+          <div class="overflow-hidden aspect-video">
+            <img 
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" 
+              alt="Academic Excellence and Leadership Workshops" 
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2 text-forest">Academic & Youth Mentorship</h3>
+            <p class="text-sm text-muted">
+              Empowering students through peer tutoring, leadership workshops, and career development sessions at MinSU.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. What We Stand For (Core Values Grid) -->
   <section class={section}>
     <div class={wrap}>
-      <h2 class={`${h2} mb-8`}>What we stand for</h2>
+      <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+        <span class="inline-block mb-2 text-xs font-bold uppercase tracking-wider text-gold">Guiding Principles</span>
+        <h2 class={`${h2}`}>What We Stand For</h2>
+      </div>
+
       <div class="grid gap-6 md:grid-cols-3">
-        {values.map(([t, d]) => (
-          <div class="rounded-2xl border-t-4 border-gold bg-cream p-6">
-            <h3 class="mb-2 font-display text-xl font-bold">{t}</h3>
-            <p class="text-sm text-muted">{d}</p>
+        {values.map(([title, description], i) => (
+          <div 
+            class="rounded-2xl border-t-4 border-gold bg-cream p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay={i * 100}
+          >
+            <h3 class="mb-3 font-display text-2xl font-bold text-forest">{title}</h3>
+            <p class="text-sm text-muted leading-relaxed">{description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class={`${section} bg-forest text-white`}>
-    <div class={`${wrap} grid gap-10 md:grid-cols-2`}>
-      <div>
-        <h2 class={`${h2} mb-3`}>Mission</h2>
-        <p class="max-w-[55ch] text-cream/85">Replace with your chapter’s mission statement.</p>
+  <!-- 6. Mission & Vision -->
+  <section class={`${section} bg-forest text-white relative overflow-hidden`}>
+    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class={`${wrap} grid gap-12 md:grid-cols-2 relative z-10`}>
+      <div data-aos="fade-right">
+        <div class="inline-flex items-center justify-center size-12 rounded-xl bg-gold/20 text-gold mb-4 font-bold">M</div>
+        <h2 class={`${h2} mb-4 text-white`}>Our Mission</h2>
+        <p class="text-cream/90 text-lg leading-relaxed max-w-[55ch]">
+          To serve and excel in all fields of human endeavor in accordance with the Tenets and Codes of Conduct of the Triskelion Grand Fraternity, continuously empowering the principle that "Man is Brother unto Man" through active student leadership, community service, and academic excellence.
+        </p>
       </div>
-      <div>
-        <h2 class={`${h2} mb-3`}>Vision</h2>
-        <p class="max-w-[55ch] text-cream/85">Replace with your chapter’s vision statement.</p>
+
+      <div data-aos="fade-left">
+        <div class="inline-flex items-center justify-center size-12 rounded-xl bg-gold/20 text-gold mb-4 font-bold">V</div>
+        <h2 class={`${h2} mb-4 text-white`}>Our Vision</h2>
+        <p class="text-cream/90 text-lg leading-relaxed max-w-[55ch]">
+          A unified, peaceful, and progressive fraternity system where Triskelions lead as exemplars of integrity, compassion, and strength—fostering an environment where every brother is empowered to achieve their highest potential for the betterment of society.
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- 7. Map & Contact CTA -->
   <section class={section}>
-    <div class={`${wrap} grid items-center gap-8 md:grid-cols-[1fr_auto]`}>
+  <div class={`${wrap} grid items-center gap-8 lg:grid-cols-2 rounded-3xl bg-cream p-6 sm:p-8 md:p-12`} data-aos="fade-up">
+    
+    <!-- Content & Action Column -->
+    <div class="flex flex-col justify-between h-full space-y-6">
       <div>
-        <h2 class={`${h2} mb-3`}>Where to find us</h2>
-        <p class="text-muted">{site.address}</p>
-        <a href={site.mapsUrl} target="_blank" rel="noopener" class="mt-3 inline-block font-bold text-forest underline decoration-gold decoration-2 underline-offset-4">Open in Google Maps</a>
+        <span class="inline-block mb-1 text-xs font-bold uppercase tracking-wider text-gold">Connect With Us</span>
+        <h2 class={`${h2} mb-2`}>Where to Find Us</h2>
+        <p class="text-muted mb-4 leading-relaxed">{site.address}</p>
+        
+        <a 
+          href={site.mapsUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 font-bold text-forest underline decoration-gold decoration-2 underline-offset-4 hover:text-gold transition-colors text-sm sm:text-base"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-none text-gold"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open in Google Maps
+        </a>
       </div>
-      <a href="/contact" class={btnGold}>Get in touch</a>
+
+      <div>
+        <a href="/contact" class={`${btnGold} inline-block text-center text-base px-8 py-4 shadow-lg w-full sm:w-auto`}>
+          Get in Touch
+        </a>
+      </div>
     </div>
-  </section>
+
+    <!-- Embedded Google Map Column -->
+    <div class="w-full h-64 sm:h-80 lg:h-full min-h-[260px] rounded-2xl overflow-hidden shadow-md border border-black/10">
+      <iframe
+        title="Mindoro State University - Bongabong Campus Map"
+        src={site.mapsEmbedUrl || "https://maps.google.com/maps?q=Mindoro%20State%20University%20Bongabong%20Campus&t=&z=15&ie=UTF8&iwloc=&output=embed"}
+        class="w-full h-full min-h-[260px] border-0"
+        loading="lazy"
+        allowfullscreen=""
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+  </div>
+</section>
 </Layout>
 
+<!-- Optional Scroll Animation Library (AOS) Initialization -->
 <script>
-  const tabs = [...document.querySelectorAll<HTMLElement>('[role=tab]')];
-  tabs.forEach((t) => t.addEventListener('click', () => {
-    tabs.forEach((x) => {
-      const on = x === t;
-      x.setAttribute('aria-selected', String(on));
-      document.getElementById(x.getAttribute('aria-controls')!)!.hidden = !on;
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out-cubic',
     });
-  }));
+  });
 </script>
