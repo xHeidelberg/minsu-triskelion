@@ -1,9 +1,12 @@
 ---
 import { Image } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
+import Placeholder from '../components/Placeholder.astro';
 import { site, values } from '../data/site';
 import { wrap, section, h2, btnGold } from '../data/ui';
+import groupPhoto from '../assets/cont.jpg';
 import groupPhoto from '../assets/cont.jpg';
 
 const years = new Date().getFullYear() - site.foundedYear;
@@ -22,6 +25,7 @@ const years = new Date().getFullYear() - site.foundedYear;
       <div class="relative group" data-aos="fade-right">
         <div class="absolute -inset-2 rounded-2xl bg-gradient-to-r from-gold/30 to-forest/30 blur-lg opacity-70 group-hover:opacity-100 transition duration-500"></div>
         <img 
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" 
           src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" 
           alt="Triskelion Brotherhood and Leadership" 
           class="relative aspect-[4/3] w-full rounded-2xl object-cover shadow-xl transition-transform duration-500 group-hover:scale-[1.01]" 
@@ -119,6 +123,7 @@ const years = new Date().getFullYear() - site.foundedYear;
         </p>
         <p>
           Driven by a shared commitment to leadership, academic integrity, and civic duty, the chapter established a structural foundation designed to endure institutional evolution.
+        </p>
         </p>
         <p>
           To ensure structural integrity and alignment with provincial governance, the chapter's formal chartering was officially sponsored by the <strong class="text-forest font-semibold">Eastern Mindoro College (EMC) Chapter</strong>. This strategic sponsorship provided crucial mentorship.
