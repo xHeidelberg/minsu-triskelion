@@ -6,6 +6,9 @@ import Placeholder from '../components/Placeholder.astro';
 import { site, values } from '../data/site';
 import { wrap, section, h2, btnGold } from '../data/ui';
 import groupPhoto from '../assets/cont.jpg';
+import ment from '../assets/ment.png';
+import serv from '../assets/serv.jpg';
+import sculp from '../assets/sculp.jpeg';
 
 const years = new Date().getFullYear() - site.foundedYear;
 ---
@@ -93,8 +96,8 @@ const years = new Date().getFullYear() - site.foundedYear;
     <!-- Left Column: Visual Media -->
     <div data-aos="fade-right" class="relative w-full">
       <div class="relative mx-auto max-w-lg md:max-w-none">
-        <img 
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
+        <Image 
+          src={sculp} 
           alt="Mindoro State University Campus Brotherhood" 
           class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl" 
           loading="lazy"
@@ -165,26 +168,26 @@ const years = new Date().getFullYear() - site.foundedYear;
 
         <!-- Card 2 -->
         <div class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
-          <div class="overflow-hidden aspect-video">
-            <img 
-              src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=800&q=80" 
-              alt="Blood Donation and Medical Missions" 
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold mb-2 text-forest">Health & Humanitarian Outreach</h3>
-            <p class="text-sm text-muted">
-              Partnering with health organizations for blood donation drives and relief efforts to aid local communities during emergencies.
-            </p>
-          </div>
-        </div>
+  <div class="overflow-hidden aspect-video">
+    <Image
+      src={serv}
+      alt="MinSU Community & Humanitarian Service" 
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+    />
+  </div>
+  <div class="p-6">
+    <h3 class="font-display text-xl font-bold mb-2 text-forest">Community & Campus Service</h3>
+    <p class="text-sm text-muted">
+      Collaborating with MinSU student organizations, faculty, and university administration to deliver impactful health drives, humanitarian outreach, and community service initiatives across campus and local communities.
+    </p>
+  </div>
+</div>
 
         <!-- Card 3 -->
         <div class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
           <div class="overflow-hidden aspect-video">
-            <img 
-              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" 
+            <Image 
+              src={ment}
               alt="Academic Excellence and Leadership Workshops" 
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
             />
@@ -228,7 +231,7 @@ const years = new Date().getFullYear() - site.foundedYear;
     <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class={`${wrap} grid gap-12 md:grid-cols-2 relative z-10`}>
       <div data-aos="fade-right">
-        <div class="inline-flex items-center justify-center size-12 rounded-xl bg-gold/20 text-gold mb-4 font-bold">M</div>
+        <div class="inline-flex items-center justify-center size-12 rounded-xl bg-gold/20 text-gold mb-4 font-bold">Mindoro</div>
         <h2 class={`${h2} mb-4 text-white`}>Our Mission</h2>
         <p class="text-cream/90 text-lg leading-relaxed max-w-[55ch]">
           To serve and excel in all fields of human endeavor in accordance with the Tenets and Codes of Conduct of the Triskelion Grand Fraternity, continuously empowering the principle that "Man is Brother unto Man" through active student leadership, community service, and academic excellence.
