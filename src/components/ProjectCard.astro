@@ -4,7 +4,7 @@ import Placeholder from './Placeholder.astro';
 ---
 <article data-category={p.category} class="overflow-hidden rounded-2xl bg-white shadow-sm">
   {p.img
-    ? <img src={p.img} alt={p.title} class="aspect-[16/10] w-full object-cover" />
+    ? <img src={p.img} alt={p.title} loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover" />
     : <Placeholder class="aspect-[16/10]" label="Project photo" />}
   <div class="p-5">
     <p class="mb-1 text-sm font-bold text-gold">{p.category}</p>

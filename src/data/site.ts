@@ -1,4 +1,4 @@
-// All editable content lives here. Set `img` to a path like '/images/officers/grand-triskelion.jpg'
+// All editable content lives here. Set `img` to a path like '/images/officers/grand-triskelion.webp'
 // (files go in /public/images/...). Leave null to show a placeholder.
 export const nav: [string, string][] = [
   ['Home', '/'], ['About Us', '/about'], ['Leadership', '/leadership'],
@@ -18,7 +18,7 @@ export const site = {
 export const contact = {
   name: 'Gener Mercene',
   role: 'Information and Communication',
-  img: '/images/officers/userIcon.png' as string | null,
+  img: '/images/officers/userIcon.webp' as string | null,
   email: 'minsu.triskelions@protonmail.com',
   phone: '09XX XXX XXXX',
   facebook: 'https://facebook.com/minsu.triskelion',
@@ -26,12 +26,12 @@ export const contact = {
 };
 
 export const heroImages = [
-  '/images/hero/hero-1.jpg',
-  '/images/hero/hero-2.jpg',
-  '/images/hero/hero-3.jpg',
-  '/images/hero/hero-4.jpg',
-  '/images/hero/hero-5.jpg',
-  '/images/hero/hero-6.jpg'
+  '/images/hero/hero-1.webp',
+  '/images/hero/hero-2.webp',
+  '/images/hero/hero-3.webp',
+  '/images/hero/hero-4.webp',
+  '/images/hero/hero-5.webp',
+  '/images/hero/hero-6.webp'
 
 ];
 
@@ -39,7 +39,7 @@ export const officers = [
   {
     position: 'Grand Triskelion',
     name: 'Robyn Kristoffer Fernandez',
-    img: '/images/officers/gt.png' as string | null,
+    img: '/images/officers/gt.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Serves as the primary executive officer overseeing chapter affairs',
@@ -51,7 +51,7 @@ export const officers = [
   {
     position: 'Deputy Grand Triskelion',
     name: 'Ashly Fortu',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Assists the executive leadership in daily operations',
@@ -62,7 +62,7 @@ export const officers = [
   {
     position: 'Master Wielder of the Whip',
     name: 'Jorenz Selda',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Maintains order and decorum during official gatherings',
@@ -73,7 +73,7 @@ export const officers = [
   {
     position: 'Master Keeper of the Scroll',
     name: 'John Carlo Quintana',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Records and archives minutes of official meetings',
@@ -84,7 +84,7 @@ export const officers = [
   {
     position: 'Master Keeper of the Chest',
     name: 'Reymart Quinto',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Manages chapter funds and financial accounts',
@@ -96,7 +96,7 @@ export const officers = [
   {
     position: 'Chairman of Master Triskelion',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Provides general governance oversight for council operations',
@@ -108,7 +108,7 @@ export const officers = [
   {
     position: 'Speaker of Master Triskelion',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Acts as the official spokesperson for public announcements',
@@ -119,7 +119,7 @@ export const officers = [
   {
     position: 'Interior Affairs',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Coordinates internal administrative functions',
@@ -130,7 +130,7 @@ export const officers = [
   {
     position: 'Education and Orientation',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Facilitates educational and onboarding programs for new members',
@@ -141,7 +141,7 @@ export const officers = [
   {
     position: 'Membership and Verification',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Oversees membership application and intake processes',
@@ -152,7 +152,7 @@ export const officers = [
   {
     position: 'Information and Communication',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Manages official social media channels and digital media',
@@ -163,7 +163,7 @@ export const officers = [
   {
     position: 'Alumni Affairs',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Serves as the liaison to alumni members and networks',
@@ -174,7 +174,7 @@ export const officers = [
   {
     position: 'Special Projects',
     name: 'Bro. XXX',
-    img: '/images/officers/replace.png' as string | null,
+    img: '/images/officers/replace.webp' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Plans and manages special events and major activities',
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     category: 'Logistics',
     date: 'November 2026',
     place: 'Brgy. Lisap, Bongabong, Or. Mindoro',
-    img: 'images/project/out1.jpg',
+    img: '/images/project/out1.webp',
     text: 'Assisted in the logistical preparation and loading of essential goods for distribution to the indigenous community of Brgy. Lisap, ensuring timely delivery and efficient allocation of relief resources.'
   },
   {
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     category: 'Fraternal',
     date: 'October 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/socio.jpg',
+    img: '/images/project/socio.webp',
     text: 'Conducted a 2-day Socio-Emotional Spiritual Fellowship focused on holistic well-being, empowering members to build internal strength, empathy, and purpose-driven leadership for community and fraternal service.'
   },
   {
@@ -217,7 +217,7 @@ export const projects: Project[] = [
     category: 'Fraternal',
     date: 'October 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/nationalAnn.jpg',
+    img: '/images/project/nationalAnn.webp',
     text: 'Commemorating the 58th founding anniversary of the organization, honoring its historic roots established on October 4, 1968, at UP Diliman, and celebrating a legacy of enduring brotherhood and community impact.'
   },
   {
@@ -225,7 +225,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'September 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/camp1.jpg',
+    img: '/images/project/camp1.webp',
     text: 'Partnered with the MinSU University Student Government (USG) to prepare and distribute free hot meals to students of the MinSU Bongabong Campus in support of student welfare.'
   },
   {
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     category: 'Fraternal',
     date: 'August 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/counc.jpg',
+    img: '/images/project/counc.webp',
     text: 'Celebrating the council\'s rich history, upholding a commitment to brotherhood and community involvement, and commemorating years of impactful service.'
   },
   {
@@ -241,7 +241,7 @@ export const projects: Project[] = [
     category: 'Humanitarian',
     date: 'August 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/augAct.jpg',
+    img: '/images/project/augAct.webp',
     text: 'Collaborated with the University Student Government (USG) to distribute food packs directly to students residing in nearby boarding houses, reinforcing a culture of mutual care and community support.'
   },
   {
@@ -249,7 +249,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'July 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/julAct.jpg',
+    img: '/images/project/julAct.webp',
     text: 'Kicked off the chapter\'s 19th founding anniversary by volunteering to prepare, cook, and serve complimentary meals for incoming freshmen during their First Day Orientation, welcoming new students to the MinSU community.'
   },
   {
@@ -257,7 +257,7 @@ export const projects: Project[] = [
     category: 'Fraternal',
     date: 'July 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/chapAnn.jpg',
+    img: '/images/project/chapAnn.webp',
     text: 'Commemorated the chapter\'s founding anniversary by celebrating its rich history, strengthening alumni network bonds, and fostering lifelong fraternal camaraderie.'
   },
   {
@@ -265,7 +265,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'July 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/julAct2.jpg',
+    img: '/images/project/julAct2.webp',
     text: 'Participated in Project: Campus Revive, focusing on practical service, campus beautification, and strengthening camaraderie while improving university spaces for the student community.'
   },
   {
@@ -273,7 +273,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'May 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actMay.jpg',
+    img: '/images/project/actMay.webp',
     text: 'Extended service during the 2nd Day of Project Hapag in coordination with the University Student Government (USG) and the Office of Student Support and Engagement (OSSE), assisting in the preparation and distribution of free meals for students taking their final examinations.'
   },
   {
@@ -281,7 +281,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'May 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actMay2.jpg',
+    img: '/images/project/actMay2.webp',
     text: 'Assisted the University Student Government (USG) and Office of Student Support and Engagement (OSSE) in preparing and distributing free lugaw and pandesal for Project Hapag, providing comfort and encouragement to students during their final examinations.'
   },
   {
@@ -289,7 +289,7 @@ export const projects: Project[] = [
     category: 'Advocacy',
     date: 'April 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actApr.jpg',
+    img: '/images/project/actApr.webp',
     text: 'Partnered with the University Student Government (USG) to assist in setting up and preparing the venue for the campus Mural Painting Competition, supporting student creativity, artistic expression, and campus collaboration.'
   },
   {
@@ -297,7 +297,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'April 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actApr2.jpg',
+    img: '/images/project/actApr2.webp',
     text: 'Collaborated with the University Student Government (USG), MBC Admission Scholarship Office, and campus officials to prepare and distribute nutritious lugaw and fresh pandesal in support of the student community.'
   },
   {
@@ -305,7 +305,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'April 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actApr3.jpg',
+    img: '/images/project/actApr3.webp',
     text: 'Assisted in preparing, cooking, and distributing free lugaw to support student cadet participants during the Regional Annual Administrative and Tactical Inspection (RAATI) 2026, fostering comfort, strength, and campus unity.'
   },
   {
@@ -313,7 +313,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'March 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actMarch.jpg',
+    img: '/images/project/actMarch.webp',
     text: 'Partnered with the University Student Government (USG) to provide an eco-friendly free refreshment station during campus Intramurals, encouraging the use of reusable cups and supporting student athletes and attendees.'
   },
   {
@@ -321,7 +321,7 @@ export const projects: Project[] = [
     category: 'Civic',
     date: 'March 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actMarch2.jpg',
+    img: '/images/project/actMarch2.webp',
     text: 'Partnered with the University Student Government (USG) to launch a free refreshment station for campus Intramurals, distributing over 500 liters of water and juice to student athletes, attendees, and spectators.'
   },
   {
@@ -329,7 +329,7 @@ export const projects: Project[] = [
     category: 'Advocacy',
     date: 'March 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actMarch3.jpg',
+    img: '/images/project/actMarch3.webp',
     text: 'Responded to the call for volunteers by the Office of the Auxiliary & Physical Facilities to assist in ground leveling and site preparation for the library area mural project, enhancing campus spaces for the MinSU community.'
   },
   {
@@ -337,7 +337,7 @@ export const projects: Project[] = [
     category: 'Advocacy',
     date: 'February 2026',
     place: 'Mindoro State University - Bongabong Campus',
-    img: 'images/project/actFeb.jpg',
+    img: '/images/project/actFeb.webp',
     text: 'Handed out free flowers to faculty, staff, and students across campus in celebration of Valentine\'s Day, promoting appreciation and positivity within the MinSU community.'
   }
 ];

@@ -14,8 +14,7 @@ const grand = officers[0];
   <section class="relative isolate overflow-hidden bg-forest text-white">
     <div class="pointer-events-none absolute inset-0 -z-10 select-none" aria-hidden="true">
       {heroImages.map((src, i) => (
-        <img src={src} alt="" data-slide loading="eager" fetchpriority={i === 0 ? 'high' : 'auto'} draggable="false"
-          onerror="this.style.display='none'"
+        <img src={i === 0 ? src : undefined} data-src={src} alt="" data-slide loading={i === 0 ? 'eager' : 'lazy'} decoding="async" fetchpriority={i === 0 ? 'high' : 'auto'} draggable="false"
           class:list={['absolute inset-0 size-full object-cover transition-opacity duration-1000 motion-reduce:transition-none', i === 0 ? 'opacity-100' : 'opacity-0']} />
       ))}
       <div class="absolute inset-0 bg-linear-to-r from-deep/90 via-deep/65 to-deep/30"></div>
@@ -93,7 +92,7 @@ Empowering Triskelions to lead with integrity, pursue academic excellence, and f
       </div>
       <article class="grid overflow-hidden rounded-2xl bg-forest text-white sm:grid-cols-[2fr_3fr]">
         {grand.img
-          ? <img src={grand.img} alt={grand.position} class="aspect-[4/3] size-full object-cover sm:aspect-auto" />
+          ? <img src={grand.img} alt={grand.position} loading="lazy" decoding="async" class="aspect-[4/3] size-full object-cover sm:aspect-auto" />
           : <Placeholder class="aspect-[4/3] sm:aspect-auto" />}
         <div class="flex flex-col justify-center p-6 md:p-10">
           <p class="mb-1 text-sm font-bold text-gold">{grand.position}</p>
@@ -130,14 +129,33 @@ Empowering Triskelions to lead with integrity, pursue academic excellence, and f
 </Layout>
 
 <script>
-  // Hero slideshow: changes by itself every 5 seconds
-  const slides = [...document.querySelectorAll<HTMLElement>('[data-slide]')];
-  if (slides.length > 1) {
-    let cur = 0;
-    setInterval(() => {
-      slides[cur].classList.replace('opacity-100', 'opacity-0');
-      cur = (cur + 1) % slides.length;
-      slides[cur].classList.replace('opacity-0', 'opacity-100');
-    }, 5000);
-  }
+  const slides = [...document.querySelectorAll<HTMLImageElement>('[data-slide]')];
+  let activeSlide = slides[0];
+
+  const advanceSlideshow = () => {
+    if (slides.length < 2 || !activeSlide) return;
+
+    const activeIndex = slides.indexOf(activeSlide);
+    const nextSlide = slides[(activeIndex + 1) % slides.length];
+    const showNextSlide = () => {
+      activeSlide.classList.replace('opacity-100', 'opacity-0');
+      nextSlide.classList.replace('opacity-0', 'opacity-100');
+      activeSlide = nextSlide;
+      window.setTimeout(advanceSlideshow, 5000);
+    };
+
+    if (nextSlide.complete && nextSlide.naturalWidth > 0) {
+      showNextSlide();
+      return;
+    }
+
+    nextSlide.addEventListener('load', showNextSlide, { once: true });
+    nextSlide.addEventListener('error', () => {
+      slides.splice(slides.indexOf(nextSlide), 1);
+      window.setTimeout(advanceSlideshow, 5000);
+    }, { once: true });
+    nextSlide.src = nextSlide.dataset.src ?? '';
+  };
+
+  if (slides.length > 1) window.setTimeout(advanceSlideshow, 5000);
 </script>

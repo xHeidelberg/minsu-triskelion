@@ -19,7 +19,7 @@ const info = [
       <div class="grid gap-5">
         <div class="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm">
           {contact.img
-            ? <img src={contact.img} alt={contact.name} class="size-20 flex-none rounded-full object-cover" />
+            ? <img src={contact.img} alt={contact.name} loading="lazy" decoding="async" class="size-20 flex-none rounded-full object-cover" />
             : <Placeholder class="size-20 flex-none rounded-full !p-0 text-[.6rem]" label="Photo" />}
           <div>
             <p class="text-sm font-bold text-gold">Point of contact</p>
