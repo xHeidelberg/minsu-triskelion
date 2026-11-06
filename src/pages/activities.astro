@@ -4,22 +4,30 @@ import PageHero from '../components/PageHero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/site';
 import { wrap, section, btnGold } from '../data/ui';
+
 const cats = ['All', ...new Set(projects.map((p) => p.category))];
 ---
+
 <Layout title="Activities">
   <PageHero title="Activities" intro="Community service, learning, and brotherhood activities the chapter has organized." />
 
   <section class={`${section} bg-cream`}>
     <div class={wrap}>
+      <!-- Category Filters -->
       <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
         {cats.map((c, i) => (
           <button type="button" data-filter={c} aria-pressed={i === 0 ? 'true' : 'false'}
-            class="min-h-11 rounded-full border border-ink/25 bg-white px-5 text-sm font-bold aria-pressed:border-forest aria-pressed:bg-forest aria-pressed:text-white">{c}</button>
+            class="min-h-11 rounded-full border border-ink/25 bg-white px-5 text-sm font-bold transition-colors aria-pressed:border-forest aria-pressed:bg-forest aria-pressed:text-white hover:bg-forest/5 aria-pressed:hover:bg-forest">{c}</button>
         ))}
       </div>
+
+      <!-- Activities Grid -->
       <div id="grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => <ProjectCard p={p} />)}
       </div>
+
+      <!-- Responsive Pagination Controls -->
+      <div id="pagination" class="mt-12 flex items-center justify-center gap-2"></div>
     </div>
   </section>
 
@@ -37,8 +45,80 @@ const cats = ['All', ...new Set(projects.map((p) => p.category))];
 <script>
   const btns = [...document.querySelectorAll<HTMLElement>('[data-filter]')];
   const cards = [...document.querySelectorAll<HTMLElement>('#grid [data-category]')];
+  const paginationContainer = document.getElementById('pagination');
+
+  let activeCategory = 'All';
+  let currentPage = 1;
+
+  // Determine items per page based on viewport (3 for mobile, 6 for desktop)
+  const getItemsPerPage = () => (window.innerWidth < 640 ? 3 : 6);
+  let itemsPerPage = getItemsPerPage();
+
+  // Helper to get cards belonging to current filter
+  const getFilteredCards = () => {
+    return activeCategory === 'All' 
+      ? cards 
+      : cards.filter(c => c.dataset.category === activeCategory);
+  };
+
+  // Render Page Numbers and Grid visibility
+  const updateDisplay = () => {
+    const filtered = getFilteredCards();
+    const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+
+    // Reset current page if out of bounds after filtering
+    if (currentPage > totalPages) currentPage = 1;
+
+    // Update Card visibility
+    cards.forEach(card => card.classList.add('hidden'));
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    filtered.slice(start, end).forEach(card => card.classList.remove('hidden'));
+
+    // Build Pagination Buttons
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = '';
+
+    if (totalPages <= 1) return; // Hide pagination if only 1 page exists
+
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.type = 'button';
+      pageBtn.textContent = String(i);
+      pageBtn.className = `min-h-10 min-w-10 rounded-lg border font-bold transition-all text-sm ${
+        i === currentPage
+          ? 'border-forest bg-forest text-white'
+          : 'border-ink/20 bg-white text-ink hover:border-forest hover:text-forest'
+      }`;
+
+      pageBtn.addEventListener('click', () => {
+        currentPage = i;
+        updateDisplay();
+        document.getElementById('grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      paginationContainer.appendChild(pageBtn);
+    }
+  };
+
+  // Event Listeners for Filters
   btns.forEach((b) => b.addEventListener('click', () => {
     btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    cards.forEach((c) => c.classList.toggle('hidden', b.dataset.filter !== 'All' && c.dataset.category !== b.dataset.filter));
+    activeCategory = b.dataset.filter || 'All';
+    currentPage = 1;
+    updateDisplay();
   }));
+
+  // Handle dynamic screen resizing (e.g. rotating mobile device)
+  window.addEventListener('resize', () => {
+    const newItemsPerPage = getItemsPerPage();
+    if (newItemsPerPage !== itemsPerPage) {
+      itemsPerPage = newItemsPerPage;
+      updateDisplay();
+    }
+  });
+
+  // Initial render
+  updateDisplay();
 </script>
