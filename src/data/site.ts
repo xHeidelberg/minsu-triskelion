@@ -2,7 +2,7 @@
 // (files go in /public/images/...). Leave null to show a placeholder.
 export const nav: [string, string][] = [
   ['Home', '/'], ['About Us', '/about'], ['Leadership', '/leadership'],
-  ['Projects', '/projects'], ['Recruitment', '/recruitment'], ['Get in touch', '/contact'],
+  ['Activities', '/activities'], ['Recruitment', '/recruitment'], ['Get in touch', '/contact'],
 ];
 
 export const site = {
@@ -199,25 +199,41 @@ export const projects = [
     title: 'Leadership Development',
     category: 'Fraternal',
     date: 'October 2026',
-    place: 'Bongabong, Or. Mindoro',
+    place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
     img: 'images/project/socio.jpg' as string | null,
     text: 'Conducted a 2-day Socio-Emotional Spiritual Fellowship focused on holistic well-being, empowering members to build internal strength, empathy, and purpose-driven leadership for community and fraternal service.'
+  },
+  {
+    title: 'Fraternity Founding Anniversary',
+    category: 'Fraternal',
+    date: 'October 2026',
+    place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
+    img: 'images/project/nationalAnn.jpg' as string | null,
+    text: 'Commemorating the 58th founding anniversary of the organization, honoring its historic roots established on October 4, 1968, at UP Diliman, and celebrating a legacy of enduring brotherhood and community impact.'
   },
   {
     title: 'Free Meal Distribution Drive',
     category: 'Civic',
     date: 'September 2026',
-    place: 'Bongabong, Or. Mindoro',
+    place: 'Mindoro State University',
     img: 'images/project/camp1.jpg' as string | null,
     text: 'Partnered with the MinSU University Student Government (USG) to prepare and distribute free hot meals to students of the MinSU Bongabong Campus in support of student welfare.'
   },
   {
-    title: 'Leadership seminar', category: 'Education', date: 'Month Year', place: 'MinSU Bongabong', img: null as string | null,
-    text: 'Replace with a short summary of the topic, the speakers, and who attended.'
+    title: 'Municipal Council Anniversary',
+    category: 'Fraternal',
+    date: 'August 2026',
+    place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
+    img: 'images/project/counc.jpg' as string | null,
+    text: 'Celebrating the council\'s rich history, upholding a commitment to brotherhood and community involvement, and commemorating years of impactful service.'
   },
   {
-    title: 'Anniversary celebration', category: 'Brotherhood', date: 'July 27', place: 'Brgy. Labasan', img: null as string | null,
-    text: 'Replace with a short summary of how the chapter celebrates its founding every year.'
+    title: 'Student Food Pack Distribution Drive',
+    category: 'Humanitarian',
+    date: 'August 2026',
+    place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
+    img: 'images/project/augAct.jpg' as string | null,
+    text: 'Collaborated with the University Student Government (USG) to distribute food packs directly to students residing in nearby boarding houses, reinforcing a culture of mutual care and community support.'
   },
   {
     title: 'Sports fest', category: 'Brotherhood', date: 'Month Year', place: 'MinSU Bongabong', img: null as string | null,
