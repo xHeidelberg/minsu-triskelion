@@ -18,7 +18,7 @@ export const site = {
 export const contact = {
   name: 'Gener Mercene',
   role: 'Information and Communication',
-  img: null as string | null,
+  img: '/images/officers/userIcon.png' as string | null,
   email: 'minsu.triskelions@protonmail.com',
   phone: '09XX XXX XXXX',
   facebook: 'https://facebook.com/minsu.triskelion',
@@ -51,7 +51,7 @@ export const officers = [
   {
     position: 'Deputy Grand Triskelion',
     name: 'Ashly Fortu',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Assists the executive leadership in daily operations',
@@ -62,7 +62,7 @@ export const officers = [
   {
     position: 'Master Wielder of the Whip',
     name: 'Jorenz Selda',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Maintains order and decorum during official gatherings',
@@ -73,7 +73,7 @@ export const officers = [
   {
     position: 'Master Keeper of the Scroll',
     name: 'John Carlo Quintana',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Records and archives minutes of official meetings',
@@ -84,7 +84,7 @@ export const officers = [
   {
     position: 'Master Keeper of the Chest',
     name: 'Reymart Quinto',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Manages chapter funds and financial accounts',
@@ -92,10 +92,11 @@ export const officers = [
       'Provides regular financial summaries to the executive leadership'
     ]
   },
+  /* Replace for future use
   {
     position: 'Chairman of Master Triskelion',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Provides general governance oversight for council operations',
@@ -103,11 +104,11 @@ export const officers = [
       'Acts as a liaison to advisory and external bodies'
     ]
   },
-  // MASTER TRISKELION
+  
   {
     position: 'Speaker of Master Triskelion',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Acts as the official spokesperson for public announcements',
@@ -118,7 +119,7 @@ export const officers = [
   {
     position: 'Interior Affairs',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Coordinates internal administrative functions',
@@ -129,7 +130,7 @@ export const officers = [
   {
     position: 'Education and Orientation',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Facilitates educational and onboarding programs for new members',
@@ -140,7 +141,7 @@ export const officers = [
   {
     position: 'Membership and Verification',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Oversees membership application and intake processes',
@@ -151,7 +152,7 @@ export const officers = [
   {
     position: 'Information and Communication',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Manages official social media channels and digital media',
@@ -162,7 +163,7 @@ export const officers = [
   {
     position: 'Alumni Affairs',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Serves as the liaison to alumni members and networks',
@@ -173,7 +174,7 @@ export const officers = [
   {
     position: 'Special Projects',
     name: 'Bro. XXX',
-    img: null as string | null,
+    img: '/images/officers/replace.png' as string | null,
     term: 'Term: Academic Year 2026-2027',
     duties: [
       'Plans and manages special events and major activities',
@@ -181,21 +182,34 @@ export const officers = [
       'Leads fundraising and special promotional initiatives'
     ]
   }
+    */
 
 ];
 
 export const projects = [
   {
-    title: 'Community outreach', category: 'Community service', date: 'Month Year', place: 'Bongabong, Or. Mindoro', img: null as string | null,
-    text: 'Replace with a short summary of the activity, who it helped, and how many brods took part.'
+    title: 'Indigenous Community Relief Assistance',
+    category: 'Logistics',
+    date: 'November 2026',
+    place: 'Brgy. Lisap, Bongabong, Or. Mindoro',
+    img: 'images/project/out1.jpg' as string | null,
+    text: 'Assisted in the logistical preparation and loading of essential goods for distribution to the indigenous community of Brgy. Lisap, ensuring timely delivery and efficient allocation of relief resources.'
   },
   {
-    title: 'Tree planting', category: 'Community service', date: 'Month Year', place: 'Bongabong, Or. Mindoro', img: null as string | null,
-    text: 'Replace with a short summary of the activity, who it helped, and how many brods took part.'
+    title: 'Leadership Development',
+    category: 'Fraternal',
+    date: 'October 2026',
+    place: 'Bongabong, Or. Mindoro',
+    img: 'images/project/socio.jpg' as string | null,
+    text: 'Conducted a 2-day Socio-Emotional Spiritual Fellowship focused on holistic well-being, empowering members to build internal strength, empathy, and purpose-driven leadership for community and fraternal service.'
   },
   {
-    title: 'Blood donation drive', category: 'Community service', date: 'Month Year', place: 'MinSU Bongabong', img: null as string | null,
-    text: 'Replace with a short summary of the activity, who it helped, and how many brods took part.'
+    title: 'Free Meal Distribution Drive',
+    category: 'Civic',
+    date: 'September 2026',
+    place: 'Bongabong, Or. Mindoro',
+    img: 'images/project/camp1.jpg' as string | null,
+    text: 'Partnered with the MinSU University Student Government (USG) to prepare and distribute free hot meals to students of the MinSU Bongabong Campus in support of student welfare.'
   },
   {
     title: 'Leadership seminar', category: 'Education', date: 'Month Year', place: 'MinSU Bongabong', img: null as string | null,
