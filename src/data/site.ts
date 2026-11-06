@@ -7,12 +7,28 @@ export const nav: [string, string][] = [
 
 export const site = {
   name: 'Mindoro State University - Bongabong Chapter',
+  shortName: 'MinSU Bongabong Triskelions',
   org: 'ΤΓΦ',
   founded: 'July 27, 2007',
   hrsService: 300,
   foundedYear: 2007,
   address: 'Brgy. Labasan, Bongabong, Oriental Mindoro',
+  city: 'Bongabong, Oriental Mindoro',
+  country: 'Philippines',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Mindoro+State+University+Bongabong+Campus',
+  description: 'Tau Gamma Phi (ΤΓΦ) chapter at Mindoro State University - Bongabong, serving the campus and local community through fraternity, leadership, academic excellence, and service.',
+  keywords: [
+    'Tau Gamma Phi',
+    'Triskelion',
+    'Mindoro State University Bongabong',
+    'MinSU Bongabong chapter',
+    'student organization Bongabong',
+    'fraternity Oriental Mindoro',
+    'campus leadership organization',
+    'community service Mindoro',
+    'student recruitment Bongabong',
+    'Brotherhood service organization Philippines'
+  ],
 };
 
 export const contact = {

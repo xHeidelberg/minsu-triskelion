@@ -3,11 +3,44 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import logo from '../assets/logo2.png';
-import aboutImg from '../assets/about.jpeg'
 import Analytics from '@vercel/analytics/astro';
-import who from '../assets/who.jpg';
-const { title = 'MinSU Bongabong Triskelion' } = Astro.props;
-const full = title === 'MinSU Bongabong Triskelion' ? title : `${title} · MinSU Bongabong Triskelion`;
+import { faqs, site } from '../data/site';
+const { title = site.shortName } = Astro.props;
+const pageTitle = title === site.shortName ? title : `${title} · ${site.shortName}`;
+const description = Astro.props.description || site.description;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://minsu-triskelion.vercel.app').toString();
+const socialImage = new URL('/images/hero/hero-1.webp', Astro.site || 'https://minsu-triskelion.vercel.app').toString();
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  alternateName: ['Tau Gamma Phi', 'ΤΓΦ', 'Triskelions'],
+  url: Astro.site || 'https://minsu-triskelion.vercel.app',
+  logo: new URL(logo.src, Astro.site || 'https://minsu-triskelion.vercel.app').toString(),
+  description: site.description,
+  foundingDate: '2007-07-27',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address,
+    addressLocality: 'Bongabong',
+    addressRegion: 'Oriental Mindoro',
+    addressCountry: 'PH'
+  },
+  sameAs: ['https://facebook.com/minsu.triskelion'],
+  areaServed: 'Mindoro State University - Bongabong Campus',
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
 ---
 <!doctype html>
 <html lang="en" class="scroll-pt-20 motion-safe:scroll-smooth">
@@ -15,13 +48,30 @@ const full = title === 'MinSU Bongabong Triskelion' ? title : `${title} · MinSU
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#14352a" />
-    <meta name="description" content="Tau Gamma Phi, MinSU Bongabong chapter. Founded July 27, 2007." />
-    <title>{full}</title>
-    <meta name="theme-color" content="#14352a" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={site.keywords.join(', ')} />
+    <meta name="author" content={site.shortName} />
+    <meta name="canonical" content={canonicalUrl} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href={logo.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(orgSchema)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)}></script>
   </head>
   <body class="overflow-x-hidden bg-white font-sans leading-relaxed text-ink">
     <Header />
