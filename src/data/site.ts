@@ -186,13 +186,22 @@ export const officers = [
 
 ];
 
-export const projects = [
+export interface Project {
+  title: string;
+  category: 'Academic' | 'Environmental' | 'Health' | 'Alumni' | 'Development' | 'Logistics' | 'Fraternal' | 'Civic' | 'Humanitarian' | 'Advocacy';
+  date: string;
+  place: string;
+  img: string | null;
+  text: string;
+}
+
+export const projects: Project[] = [
   {
     title: 'Indigenous Community Relief Assistance',
     category: 'Logistics',
     date: 'November 2026',
     place: 'Brgy. Lisap, Bongabong, Or. Mindoro',
-    img: 'images/project/out1.jpg' as string | null,
+    img: 'images/project/out1.jpg',
     text: 'Assisted in the logistical preparation and loading of essential goods for distribution to the indigenous community of Brgy. Lisap, ensuring timely delivery and efficient allocation of relief resources.'
   },
   {
@@ -200,7 +209,7 @@ export const projects = [
     category: 'Fraternal',
     date: 'October 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/socio.jpg' as string | null,
+    img: 'images/project/socio.jpg',
     text: 'Conducted a 2-day Socio-Emotional Spiritual Fellowship focused on holistic well-being, empowering members to build internal strength, empathy, and purpose-driven leadership for community and fraternal service.'
   },
   {
@@ -208,15 +217,15 @@ export const projects = [
     category: 'Fraternal',
     date: 'October 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/nationalAnn.jpg' as string | null,
+    img: 'images/project/nationalAnn.jpg',
     text: 'Commemorating the 58th founding anniversary of the organization, honoring its historic roots established on October 4, 1968, at UP Diliman, and celebrating a legacy of enduring brotherhood and community impact.'
   },
   {
     title: 'Free Meal Distribution Drive',
     category: 'Civic',
     date: 'September 2026',
-    place: 'Mindoro State University',
-    img: 'images/project/camp1.jpg' as string | null,
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/camp1.jpg',
     text: 'Partnered with the MinSU University Student Government (USG) to prepare and distribute free hot meals to students of the MinSU Bongabong Campus in support of student welfare.'
   },
   {
@@ -224,7 +233,7 @@ export const projects = [
     category: 'Fraternal',
     date: 'August 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/counc.jpg' as string | null,
+    img: 'images/project/counc.jpg',
     text: 'Celebrating the council\'s rich history, upholding a commitment to brotherhood and community involvement, and commemorating years of impactful service.'
   },
   {
@@ -232,106 +241,105 @@ export const projects = [
     category: 'Humanitarian',
     date: 'August 2026',
     place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-    img: 'images/project/augAct.jpg' as string | null,
+    img: 'images/project/augAct.jpg',
     text: 'Collaborated with the University Student Government (USG) to distribute food packs directly to students residing in nearby boarding houses, reinforcing a culture of mutual care and community support.'
   },
   {
     title: '19th Founding Anniversary Freshmen Outreach',
     category: 'Civic',
     date: 'July 2026',
-    place: 'Mindoro State University',
-    img: 'images/project/julAct.jpg' as string | null,
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/julAct.jpg',
     text: 'Kicked off the chapter\'s 19th founding anniversary by volunteering to prepare, cook, and serve complimentary meals for incoming freshmen during their First Day Orientation, welcoming new students to the MinSU community.'
   },
   {
-  title: 'Founding Anniversary Fellowship',
-  category: 'Fraternal',
-  date: 'July 2026',
-  place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
-  img: 'images/project/chapAnn.jpg' as string | null,
-  text: 'Chapter\'s founding anniversary by celebrating its rich history, strengthening alumni network bonds, and fostering lifelong fraternal camaraderie.'
-},
-{
-  title: 'Project: Campus Revive Volunteer Initiative',
-  category: 'Civic',
-  date: 'July 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/julAct2.jpg' as string | null,
-  text: 'Participated in Project: Campus Revive, focusing on practical service, campus beautification, and strengthening camaraderie while improving university spaces for the student community.'
-},
-{
-  title: 'Project Hapag: Final Examinations Support (Day 2)',
-  category: 'Civic',
-  date: 'May 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actMay.jpg' as string | null,
-  text: 'May 15, 2026: Extended service during the 2nd Day of Project Hapag in coordination with the University Student Government (USG) and the Office of Student Support and Engagement (OSSE), assisting in the preparation and distribution of free meals for students taking their final examinations.'
-},
-{
-  title: 'Project Hapag: Final Examinations Support (Day 1)',
-  category: 'Civic',
-  date: 'May 2026',
-  place: 'Mindoro State University ',
-  img: 'images/project/actMay2.jpg' as string | null,
-  text: 'May 14, 2026: Assisted the University Student Government (USG) and Office of Student Support and Engagement (OSSE) in preparing and distributing free lugaw and pandesal for Project Hapag, providing comfort and encouragement to students during their final examinations.'
-},
-{
-  title: 'Mural Painting Competition Preparations Support',
-  category: 'Advocacy',
-  date: 'April 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actApr.jpg' as string | null,
-  text: 'April 29, 2026: Partnered with the University Student Government (USG) to assist in setting up and preparing the venue for the campus Mural Painting Competition, supporting student creativity, artistic expression, and campus collaboration.'
-},
-{
-  title: 'Project Hapag: Nutritious Meal Distribution Drive',
-  category: 'Civic',
-  date: 'April 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actApr2.jpg' as string | null,
-  text: 'April 18, 2026: Collaborated with the University Student Government (USG), MBC Admission Scholarship Office, and campus officials to prepare and distribute nutritious lugaw and fresh pandesal in support of the student community.'
-},
-{
-  title: 'RAATI 2026 Refreshment Service Drive',
-  category: 'Civic',
-  date: 'April 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actApr3.jpg' as string | null,
-  text: 'April 7, 2026: Assisted in preparing, cooking, and distributing free lugaw to support student cadet participants during the Regional Annual Administrative and Tactical Inspection (RAATI) 2026, fostering comfort, strength, and campus unity.'
-},
-{
-  title: 'Intramurals Free Refreshment Station (Day 2)',
-  category: 'Civic',
-  date: 'March 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actMarch.jpg' as string | null,
-  text: 'March 18, 2026: Partnered with the University Student Government (USG) to provide an eco-friendly free refreshment station during campus Intramurals, encouraging the use of reusable cups and supporting student athletes and attendees.'
-},
-{
-  title: 'Intramurals Free Refreshment Station (Day 1)',
-  category: 'Civic',
-  date: 'March 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actMarch2.jpg' as string | null,
-  text: 'March 17, 2026: Partnered with the University Student Government (USG) to launch a free refreshment station for campus Intramurals, distributing over 500 liters of water and juice to student athletes, attendees, and spectators.'
-},
-{
-  title: 'Library Area Mural Site Preparation',
-  category: 'Advocacy',
-  date: 'March 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actMarch3.jpg' as string | null,
-  text: 'March 14, 2026: Responded to the call for volunteers by the Office of the Auxiliary & Physical Facilities to assist in ground leveling and site preparation for the library area mural project, enhancing campus spaces for the MinSU community.'
-},
-{
-  title: "Valentine's Day Flower Distribution Drive",
-  category: 'Advocacy',
-  date: 'February 2026',
-  place: 'Mindoro State University',
-  img: 'images/project/actFeb.jpg' as string | null,
-  text: 'Handed out free flowers to faculty, staff, and students across campus in celebration of Valentine\'s Day, promoting appreciation and positivity within the MinSU community.'
-}
-
+    title: 'Founding Anniversary Fellowship',
+    category: 'Fraternal',
+    date: 'July 2026',
+    place: 'Brgy. Labasan, Bongabong, Or. Mindoro',
+    img: 'images/project/chapAnn.jpg',
+    text: 'Commemorated the chapter\'s founding anniversary by celebrating its rich history, strengthening alumni network bonds, and fostering lifelong fraternal camaraderie.'
+  },
+  {
+    title: 'Project: Campus Revive Volunteer Initiative',
+    category: 'Civic',
+    date: 'July 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/julAct2.jpg',
+    text: 'Participated in Project: Campus Revive, focusing on practical service, campus beautification, and strengthening camaraderie while improving university spaces for the student community.'
+  },
+  {
+    title: 'Project Hapag: Final Examinations Support (Day 2)',
+    category: 'Civic',
+    date: 'May 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actMay.jpg',
+    text: 'Extended service during the 2nd Day of Project Hapag in coordination with the University Student Government (USG) and the Office of Student Support and Engagement (OSSE), assisting in the preparation and distribution of free meals for students taking their final examinations.'
+  },
+  {
+    title: 'Project Hapag: Final Examinations Support (Day 1)',
+    category: 'Civic',
+    date: 'May 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actMay2.jpg',
+    text: 'Assisted the University Student Government (USG) and Office of Student Support and Engagement (OSSE) in preparing and distributing free lugaw and pandesal for Project Hapag, providing comfort and encouragement to students during their final examinations.'
+  },
+  {
+    title: 'Mural Painting Competition Preparations Support',
+    category: 'Advocacy',
+    date: 'April 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actApr.jpg',
+    text: 'Partnered with the University Student Government (USG) to assist in setting up and preparing the venue for the campus Mural Painting Competition, supporting student creativity, artistic expression, and campus collaboration.'
+  },
+  {
+    title: 'Project Hapag: Nutritious Meal Distribution Drive',
+    category: 'Civic',
+    date: 'April 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actApr2.jpg',
+    text: 'Collaborated with the University Student Government (USG), MBC Admission Scholarship Office, and campus officials to prepare and distribute nutritious lugaw and fresh pandesal in support of the student community.'
+  },
+  {
+    title: 'RAATI 2026 Refreshment Service Drive',
+    category: 'Civic',
+    date: 'April 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actApr3.jpg',
+    text: 'Assisted in preparing, cooking, and distributing free lugaw to support student cadet participants during the Regional Annual Administrative and Tactical Inspection (RAATI) 2026, fostering comfort, strength, and campus unity.'
+  },
+  {
+    title: 'Intramurals Free Refreshment Station (Day 2)',
+    category: 'Civic',
+    date: 'March 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actMarch.jpg',
+    text: 'Partnered with the University Student Government (USG) to provide an eco-friendly free refreshment station during campus Intramurals, encouraging the use of reusable cups and supporting student athletes and attendees.'
+  },
+  {
+    title: 'Intramurals Free Refreshment Station (Day 1)',
+    category: 'Civic',
+    date: 'March 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actMarch2.jpg',
+    text: 'Partnered with the University Student Government (USG) to launch a free refreshment station for campus Intramurals, distributing over 500 liters of water and juice to student athletes, attendees, and spectators.'
+  },
+  {
+    title: 'Library Area Mural Site Preparation',
+    category: 'Advocacy',
+    date: 'March 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actMarch3.jpg',
+    text: 'Responded to the call for volunteers by the Office of the Auxiliary & Physical Facilities to assist in ground leveling and site preparation for the library area mural project, enhancing campus spaces for the MinSU community.'
+  },
+  {
+    title: "Valentine's Day Flower Distribution Drive",
+    category: 'Advocacy',
+    date: 'February 2026',
+    place: 'Mindoro State University - Bongabong Campus',
+    img: 'images/project/actFeb.jpg',
+    text: 'Handed out free flowers to faculty, staff, and students across campus in celebration of Valentine\'s Day, promoting appreciation and positivity within the MinSU community.'
+  }
 ];
 
 export const values = [
